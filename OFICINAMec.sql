@@ -84,6 +84,95 @@ insert into ESTOQUE (id_peca, nome_peca, quantidade_peca) values ('11', 'Correia
 insert into FONECEDOR (CNPJ, logradouro, telefone_fornecedor) values ('01.647.593/0001-45', 'Avenida manoel','(44)99572-9498'),('01.647.555/0001-45', 'Avenida manoel','(44)99444-9488'),('01.666.993/0001-65', 'Avenida indio','(44)99572-9962'),('01.627.555/0001-24', 'Avenida santana','(44)99442-9998'),('08.647.663/0001-88', 'rua Sao Paulo','(14)99572-9498'),('09.647.852/0001-45', 'Rua araruna','(14)99856-9498'),('04.622.556/0001-45', 'Rua Brasil','(44)99666-9598'),('01.985.593/0001-45', 'Rua Delmanto','(43)99325-9498'),('01.444.222/0001-45', 'Rua araruna','(11)99666-9552'),('01.999.666/0001-45', 'Rua Edmundo','(44)99888-9222');
 insert into ESTOQUE_TEM_FORNECEDOR (CNPJ, quantidade_peca) values ('01.647.593/0001-45', '10'),('01.647.555/0001-45', '100'),('01.666.993/0001-65', '50'),('01.627.555/0001-24', '300'),('08.647.663/0001-88', '40'),('09.647.852/0001-45', '100'),('04.622.556/0001-45', '2'),('01.985.593/0001-45', '10'),('01.444.222/0001-45', '0'),('01.999.666/0001-45', '0');
 
+
+#========================= Selecionar os id dos donos dos veiculos honda com placa MPP-4357 =================================================================#
+	#select id_cliente 
+  #from CLIENTE_TEM_VEICULO CV, VEICULO V , CLIENTE C 
+	#where C.id_cliente = CV.idcliente 
+	#and V.placa = CV.placa_carro 
+	#and marca_carro = 'Honda'
+  #and V.placa = CV.placa_carro and placa = 'MPP-4357';
+#============================================================================================================================================================#
+
+#========================= Selecionar mecanico com a especialidade de funelaria e pintura que trabalha 100 horas e ganha 1200 ===============================#
+	#select id_mec 
+  #from MECANICO M, MECANICO_TEM_ESPECIALIDADE ME 
+	#where M.id_mec = ME.idmec 
+  #and nome_esp = 'Funelaria e Pintura' 
+  #and horas_trabalhadas >= 100
+  #and salario_mec >= 1200;
+#============================================================================================================================================================#
+
+#========================= Selecionar o nome da especialidade do mecanico que ganha 1200 ou mais e trabalha mais de 100 horas ===============================#
+	#select distinct nome_esp 
+	#from MECANICO M, ESPECIALIDADE E,MECANICO_TEM_ESPECIALIDADE ME
+	#where M.id_mec = ME.idmec 
+	#and E.nome_esp = ME.nomeesp
+	#and horas_trabalhadas >= 100
+	#and salario_mec >= 1200;
+#============================================================================================================================================================#
+
+#========================= Selecionar CNPJ dos fornecedores que fornecem peça para ar condionado ============================================================#
+	#select CNPJ
+  #from FORNECEDOR F, ESTOQUE_TEM_FORNECEDOR EF, PECA P, ESTOQUE E
+  #where F.CNPJ = EF.CNPJ_FORNECEDOR
+  #and P.id_peca = E.idpeca
+  #and E.quantidade_peca = EF.quantidadepeca
+	#and designacao = 'Ar Condicionado'
+#=================================================================================================================================================================#
+
+#========================= Selecionar Logradouro dos fornecedores que fornecem peça para suspensao ===============================================================#
+	#select logradouro
+  #from FORNECEDOR F, ESTOQUE_TEM_FORNECEDOR EF, PECA P, ESTOQUE E
+  #where F.CNPJ = EF.CNPJ_FORNECEDOR
+  #and P.id_peca = E.idpeca
+  #and E.quantidade_peca = EF.quantidadepeca
+	#and designacao = 'Suspensao'
+#===============================================================================================================================================================#
+
+#=========================== Selecionar designação peca dos serviços acima de 3000 ==================================================================================#
+
+  #select designacao 
+  #from PECA P, REPARO R, REPARO_USA_PECA RP
+  #where P.id_peca = RP.idpeca
+  #and R.id_reparo = RP.idreparo
+  #and custo_reparo >= 3000
+#===============================================================================================================================================================#
+
+#========================= Selecionar telefone do cliente que tem um honda accord ==================================================================================#
+	#select id_cliente 
+  #from CLIENTE_TEM_VEICULO CV, VEICULO V , CLIENTE C 
+	#where C.id_cliente = CV.idcliente 
+	#and V.placa = CV.placa_carro 
+	#and marca_carro = 'Honda'
+  #and modelo_carro = 'Accord';
+#===============================================================================================================================================================#
+
+#========================= Selecionar endereço dos cliente que tem um veiculo toyota ==================================================================================#
+	#select end_cliente
+  #from CLIENTE_TEM_VEICULO CV, VEICULO V , CLIENTE C 
+	#where C.id_cliente = CV.idcliente 
+	#and V.placa = CV.placa_carro 
+	#and marca_carro = 'Toyota'
+#===============================================================================================================================================================#
+
+#========================= Selecionar telefone, endereco e id do cliente que tem um Ford Ka ==================================================================================#
+	#select id_cliente, end_cliente, telefone_cliente 
+  #from CLIENTE_TEM_VEICULO CV, VEICULO V , CLIENTE C 
+	#where C.id_cliente = CV.idcliente 
+	#and V.placa = CV.placa_carro 
+	#and marca_carro = 'Ford'
+  #and modelo_carro = 'Ka';
+#===============================================================================================================================================================#
+
+#========================= Selecionar telefone, endereco e id dos clientes que tem um Toyota ==================================================================================#
+	#select id_cliente, end_cliente, telefone_cliente , marca_carro, modelo_carro
+  #from CLIENTE_TEM_VEICULO CV, VEICULO V , CLIENTE C 
+	#where C.id_cliente = CV.idcliente 
+	#and V.placa = CV.placa_carro 
+	#and marca_carro = 'Toyota'
+#===============================================================================================================================================================#
+
 #Guilherme dos Santos Fernandes 2304325
 #https://github.com/GuilhermeSFernandes/Projeto-BD1
 
